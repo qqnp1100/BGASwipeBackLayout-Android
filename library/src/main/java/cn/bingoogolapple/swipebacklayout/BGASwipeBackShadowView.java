@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import java.lang.ref.WeakReference;
-
 import androidx.annotation.DrawableRes;
 import androidx.core.view.ViewCompat;
+
+import java.lang.ref.WeakReference;
 
 /**
  * 作者:王浩 邮件:wanghao76@meituan.com
@@ -22,6 +22,7 @@ import androidx.core.view.ViewCompat;
  * 描述:左侧阴影控件
  */
 class BGASwipeBackShadowView extends FrameLayout {
+
     private static final String TAG = BGASwipeBackShadowView.class.getSimpleName();
     private static final float WE_CHAT_STYLE_MAX_OFFSET = 0.75f;
     private Activity mActivity;
@@ -204,7 +205,7 @@ class BGASwipeBackShadowView extends FrameLayout {
         view.buildDrawingCache();
         Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache(), 0, 0,
                 UIUtil.getRealScreenWidth(mActivity),
-                UIUtil.getRealScreenHeight(mActivity) - UIUtil.getNavigationBarHeight(mActivity));
+                Math.max(UIUtil.getRealScreenHeight(mActivity) - UIUtil.getNavigationBarHeight(mActivity), 1));
         view.destroyDrawingCache();
         return bitmap;
     }
